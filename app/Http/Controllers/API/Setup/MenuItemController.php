@@ -119,7 +119,6 @@ class MenuItemController extends Controller
      */
     public function store(Request $request)
     {
-        // Validate incoming request
         $validated = $request->validate([
             'menu_id' => 'required|exists:menus,id',
             'name' => 'required|string|max:255',
@@ -131,7 +130,6 @@ class MenuItemController extends Controller
             'permissions.*' => 'exists:permissions,id',
         ]);
 
-        // Create the menu item
         $menuItem = MenuItem::create([
             'menu_id' => $validated['menu_id'],
             'name' => $validated['name'],
@@ -139,11 +137,10 @@ class MenuItemController extends Controller
             'url' => $validated['url'] ?? null,
             'icon' => $validated['icon'] ?? null,
             'sort_order' => $validated['sort_order'] ?? 0,
-            'created_by' => auth()->id(),  // assuming you have auth
-            'uuid' => Str::uuid(),        // generate a UUID
+            'created_by' => auth()->id(),
+            'uuid' => Str::uuid(),  
         ]);
 
-        // Attach permissions if provided
         if (!empty($validated['permissions'])) {
             $menuItem->permissions()->sync($validated['permissions']);
         }
