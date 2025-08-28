@@ -1,0 +1,41 @@
+{
+    "_swagger generate": "php artisan l5-swagger:generate",
+    "permission synchronizatio":"php artisan permissions:sync",
+    
+    "_instructions": "This JSON defines an entity for the Laravel API generator. Do not remove _instructions key.",
+    "_step1": "Create a folder named .entities in the project root (this folder is git ignored).",
+    "_step2": "Copy and rename this file to your entity name in singular PascalCase, e.g., Location.json.",
+    "_step3": "Add fields in snake_case, e.g., sw_name.",
+    "_step4": "Set data types: increments|uuid|integer|bigInteger|string|long|text|date|timestamp|enum|decimal|boolean|foreignId.",
+    "_step5": "For foreignId fields, add a 'references' property with the referenced table name.",
+    "_step6": "Optionally define relations in the 'relations' array. Supported types: oneToOne, oneToMany, manyToMany.",
+    "_step7": "The generator will automatically add: id, uuid, created_by, updated_by, softDeletes, and timestamps fields.",
+    "_step8": "Run the generator via Artisan command: php artisan generate:resource",
+    "_step9": "You will be prompted to select the JSON entity file from .entities folder.",
+    "_step10": "You will be prompted to choose where to put the controller (Management or Setup folder).",
+    "_step11": "The generator will create migration, model, controller (with CRUD + Swagger), register the route, and create pivot migrations if needed.",
+    
+
+
+  "name": "MenuItem",
+  "table": "menu_items",
+  "fields": [
+    { "name": "menu_id", "type": "foreignId", "references": "menu_groups" },
+    { "name": "name", "type": "string", "unique": true},
+    { "name": "sw_name", "type": "string", "unique": true },
+    { "name": "url", "type": "string", "nullable": true },
+    { "name": "icon", "type": "string","nullable": true},
+    { "name": "sort_order", "type": "integer", "nullable": false, "default": 1 }
+  ],
+  "relations": [
+    {
+      "type": "manyToMany",
+      "with": "Permission",
+      "pivot": "menu_item_permission",
+      "columns": [
+        { "name": "menu_item_id", "type": "foreignId", "references": "menu_items"},
+        { "name": "permission_id", "type": "foreignId", "references": "permissions" }
+      ]
+    }
+  ]
+}
