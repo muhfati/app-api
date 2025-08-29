@@ -438,11 +438,11 @@ class UsersController extends Controller
 
      /**
      * @OA\Delete(
-     *     path="/api/users/{id}",
+     *     path="/api/users/{uuid}",
      *     summary="Delete a userAccounts",
      *     tags={"userAccounts"},
      *     @OA\Parameter(
-     *         name="id",
+     *         name="uuid",
      *         in="path",
      *         required=true,
      *         @OA\Schema(type="integer")
