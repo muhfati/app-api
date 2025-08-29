@@ -22,9 +22,9 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('reset-password', [App\Http\Controllers\API\User\UserProfileCotroller::class, 'resetPassword'])->name('reset-password');
     Route::get('audit-logs', [App\Http\Controllers\API\User\UserProfileCotroller::class, 'auditLogs'])->name('audit-logs');
 
-    Route::apiResource('user', App\Http\Controllers\API\User\UsersCotroller::class);
-    Route::apiResource('role', App\Http\Controllers\API\User\RolesCotroller::class);
-    Route::apiResource('permission', App\Http\Controllers\API\User\PermissionsCotroller::class);
+    Route::apiResource('users', App\Http\Controllers\API\User\UsersCotroller::class);
+    Route::apiResource('roles', App\Http\Controllers\API\User\RolesCotroller::class);
+    Route::apiResource('permissions', App\Http\Controllers\API\User\PermissionsCotroller::class);
 
     Route::apiResource('menu-groups', App\Http\Controllers\API\Setup\MenuGroupController::class);
     Route::apiResource('menu-items', App\Http\Controllers\API\Setup\MenuItemController::class);
@@ -32,6 +32,3 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::apiResource('admin-hierarchies', App\Http\Controllers\API\Setup\AdminHierarchyController::class);
 
 });
-
-
-

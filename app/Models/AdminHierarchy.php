@@ -30,5 +30,10 @@ class AdminHierarchy extends Model
     {
         return LogOptions::defaults()->logOnly(['*']);
     }
+
+    public function getRouteKeyName()
+    {
+        return 'uuid';
+    }
     
 }

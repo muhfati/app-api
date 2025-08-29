@@ -110,11 +110,11 @@ class AdminHierarchyLevelController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/api/admin-hierarchy-levels/{id}",
+     *     path="/api/admin-hierarchy-levels/{uuid}",
      *     summary="Get a specific AdminHierarchyLevel",
      *     tags={"AdminHierarchyLevel"},
      *     @OA\Parameter(
-     *         name="id",
+     *         name="uuid",
      *         in="path",
      *         required=true,
      *         @OA\Schema(type="integer")
@@ -137,19 +137,19 @@ class AdminHierarchyLevelController extends Controller
     *     )
     * )
     */
-    public function show($id)
+    public function show($uuid)
     {
-        $record = AdminHierarchyLevel::findOrFail($id);
+        $record = AdminHierarchyLevel::where('uuid', $uuid)->firstOrFail();
         return response()->json(['data' => $record, 'statusCode' => 200]);
     }
 
     /**
      * @OA\Put(
-     *     path="/api/admin-hierarchy-levels/{id}",
+     *     path="/api/admin-hierarchy-levels/{uuid}",
      *     summary="Update a AdminHierarchyLevel",
      *     tags={"AdminHierarchyLevel"},
      *     @OA\Parameter(
-     *         name="id",
+     *         name="uuid",
      *         in="path",
      *         required=true,
      *         @OA\Schema(type="integer")
@@ -174,20 +174,20 @@ class AdminHierarchyLevelController extends Controller
     *     )
     * )
     */
-    public function update(Request $request, $id)
+    public function update(Request $request, $uuid)
     {
-        $record = AdminHierarchyLevel::findOrFail($id);
+        $record = AdminHierarchyLevel::where('uuid', $uuid)->firstOrFail();
         $record->update($request->all());
         return response()->json(['message' => 'AdminHierarchyLevel updated', 'statusCode' => 200]);
     }
 
     /**
      * @OA\Delete(
-     *     path="/api/admin-hierarchy-levels/{id}",
+     *     path="/api/admin-hierarchy-levels/{uuid}",
      *     summary="Delete a AdminHierarchyLevel",
      *     tags={"AdminHierarchyLevel"},
      *     @OA\Parameter(
-     *         name="id",
+     *         name="uuid",
      *         in="path",
      *         required=true,
      *         @OA\Schema(type="integer")
@@ -203,9 +203,9 @@ class AdminHierarchyLevelController extends Controller
      *     )
      * )
      */
-    public function destroy($id)
+    public function destroy($uuid)
     {
-        $record = AdminHierarchyLevel::findOrFail($id);
+        $record = AdminHierarchyLevel::where('uuid', $uuid)->firstOrFail();
         $record->delete();
         return response()->json(['message' => 'AdminHierarchyLevel deleted', 'statusCode' => 200]);
     }

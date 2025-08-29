@@ -159,11 +159,11 @@ class MenuItemController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/api/menu-items/{id}",
+     *     path="/api/menu-items/{uuid}",
      *     summary="Get a specific MenuItem",
      *     tags={"MenuItem"},
      *     @OA\Parameter(
-     *         name="id",
+     *         name="uuid",
      *         in="path",
      *         required=true,
      *         @OA\Schema(type="integer")
@@ -189,19 +189,19 @@ class MenuItemController extends Controller
     *     )
     * )
     */
-    public function show($id)
+    public function show($uuid)
     {
-        $record = MenuItem::findOrFail($id);
+        $record = MenuItem::where('uuid', $uuid)->firstOrFail();
         return response()->json(['data' => $record, 'statusCode' => 200]);
     }
 
     /**
      * @OA\Put(
-     *     path="/api/menu-items/{id}",
+     *     path="/api/menu-items/{uuid}",
      *     summary="Update a MenuItem",
      *     tags={"MenuItem"},
      *     @OA\Parameter(
-     *         name="id",
+     *         name="uuid",
      *         in="path",
      *         required=true,
      *         @OA\Schema(type="integer")
@@ -229,20 +229,20 @@ class MenuItemController extends Controller
     *     )
     * )
     */
-    public function update(Request $request, $id)
+    public function update(Request $request, $uuid)
     {
-        $record = MenuItem::findOrFail($id);
+        $record = MenuItem::where('uuid', $uuid)->firstOrFail();
         $record->update($request->all());
         return response()->json(['message' => 'MenuItem updated', 'statusCode' => 200]);
     }
 
     /**
      * @OA\Delete(
-     *     path="/api/menu-items/{id}",
+     *     path="/api/menu-items/{uuid}",
      *     summary="Delete a MenuItem",
      *     tags={"MenuItem"},
      *     @OA\Parameter(
-     *         name="id",
+     *         name="uuid",
      *         in="path",
      *         required=true,
      *         @OA\Schema(type="integer")
@@ -258,9 +258,9 @@ class MenuItemController extends Controller
      *     )
      * )
      */
-    public function destroy($id)
+    public function destroy($uuid)
     {
-        $record = MenuItem::findOrFail($id);
+        $record = MenuItem::where('uuid', $uuid)->firstOrFail();
         $record->delete();
         return response()->json(['message' => 'MenuItem deleted', 'statusCode' => 200]);
     }

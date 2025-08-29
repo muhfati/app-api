@@ -125,10 +125,10 @@ class GenerateResource extends Command
             return \$this->belongsToMany(\\App\\Models\\{$related}::class, '{$pivot}');
         }
         PHP;
-                    }
-                }
+            }
+        }
 
-                $modelTemplate = <<<PHP
+        $modelTemplate = <<<PHP
         <?php
 
         namespace App\Models;
@@ -149,6 +149,11 @@ class GenerateResource extends Command
             ];
             protected \$dates = ['deleted_at'];
 
+            public function getRouteKeyName()
+            {
+                return 'uuid';
+            }
+
             public function getActivitylogOptions(): LogOptions
             {
                 return LogOptions::defaults()->logOnly(['*']);
@@ -160,6 +165,7 @@ class GenerateResource extends Command
         File::put($modelPath, $modelTemplate);
         $this->info("Model $name generated.");
     }
+
 
     private function generateController($name, $fields, $namespace, $relations)
     {
@@ -294,14 +300,14 @@ class GenerateResource extends Command
 
             /**
              * @OA\Get(
-             *     path="/api/{$kebab}/{id}",
+             *     path="/api/{$kebab}/{uuid}",
              *     summary="Get a specific {$name}",
              *     tags={"{$name}"},
              *     @OA\Parameter(
-             *         name="id",
+             *         name="uuid",
              *         in="path",
              *         required=true,
-             *         @OA\Schema(type="integer")
+             *         @OA\Schema(type="string", format="uuid")
              *     ),
              *     @OA\Response(
              *         response=200,
@@ -311,34 +317,35 @@ class GenerateResource extends Command
              *             @OA\Property(
              *                 property="data",
              *                 type="object",
-        $fieldProperties
-            *                 ),
+            {$fieldProperties}
+            *             ),
             *             @OA\Property(property="statusCode", type="integer", example=200)
             *         )
             *     )
             * )
             */
-            public function show(\$id)
+            public function show(\$uuid)
             {
-                \$record = {$name}::findOrFail(\$id);
+                \$record = {$name}::where('uuid', \$uuid)->firstOrFail();
                 return response()->json(['data' => \$record, 'statusCode' => 200]);
             }
 
+
             /**
              * @OA\Put(
-             *     path="/api/{$kebab}/{id}",
+             *     path="/api/{$kebab}/{uuid}",
              *     summary="Update a {$name}",
              *     tags={"{$name}"},
              *     @OA\Parameter(
-             *         name="id",
+             *         name="uuid",
              *         in="path",
              *         required=true,
-             *         @OA\Schema(type="integer")
+             *         @OA\Schema(type="string", format="uuid")
              *     ),
              *     @OA\RequestBody(
              *         required=true,
              *         @OA\JsonContent(
-        $fieldRequestBody
+            {$fieldRequestBody}
             *         )
             *     ),
             *     @OA\Response(
@@ -352,23 +359,23 @@ class GenerateResource extends Command
             *     )
             * )
             */
-            public function update(Request \$request, \$id)
+            public function update(Request \$request, \$uuid)
             {
-                \$record = {$name}::findOrFail(\$id);
+                \$record = {$name}::where('uuid', \$uuid)->firstOrFail();
                 \$record->update(\$request->all());
                 return response()->json(['message' => '{$name} updated', 'statusCode' => 200]);
             }
 
             /**
              * @OA\Delete(
-             *     path="/api/{$kebab}/{id}",
+             *     path="/api/{$kebab}/{uuid}",
              *     summary="Delete a {$name}",
              *     tags={"{$name}"},
              *     @OA\Parameter(
-             *         name="id",
+             *         name="uuid",
              *         in="path",
              *         required=true,
-             *         @OA\Schema(type="integer")
+             *         @OA\Schema(type="string", format="uuid")
              *     ),
              *     @OA\Response(
              *         response=200,
@@ -381,12 +388,13 @@ class GenerateResource extends Command
              *     )
              * )
              */
-            public function destroy(\$id)
+            public function destroy(\$uuid)
             {
-                \$record = {$name}::findOrFail(\$id);
+                \$record = {$name}::where('uuid', \$uuid)->firstOrFail();
                 \$record->delete();
                 return response()->json(['message' => '{$name} deleted', 'statusCode' => 200]);
             }
+
         }
         PHP;
 

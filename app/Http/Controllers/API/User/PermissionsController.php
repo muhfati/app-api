@@ -22,7 +22,7 @@ class PermissionsController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/api/permission",
+     *     path="/api/permissions",
      *     summary="Get a paginated list of Permissions",
      *     tags={"Permissions"},
      *     @OA\Parameter(
@@ -124,7 +124,7 @@ class PermissionsController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/api/permission/{id}",
+     *     path="/api/permissions/{id}",
      *     summary="Get a specific Permissions",
      *     tags={"Permissions"},
      *     @OA\Parameter(

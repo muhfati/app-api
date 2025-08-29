@@ -27,7 +27,7 @@ class UsersController extends Controller
     
     /**
      * @OA\Get(
-     *     path="/api/user",
+     *     path="/api/users",
      *     summary="Get a paginated list of user accounts",
      *     tags={"userAccounts"},
      *     @OA\Parameter(
@@ -142,7 +142,7 @@ class UsersController extends Controller
 
     /**
      * @OA\Post(
-     *     path="/api/user",
+     *     path="/api/users",
      *     summary="Store a new userAccounts",
      *     tags={"userAccounts"},
      *     @OA\RequestBody(
@@ -245,11 +245,11 @@ class UsersController extends Controller
     
     /**
      * @OA\Get(
-     *     path="/api/user/{id}",
+     *     path="/api/users/{uuid}",
      *     summary="Get a specific userAccounts",
      *     tags={"userAccounts"},
      *     @OA\Parameter(
-     *         name="id",
+     *         name="uuid",
      *         in="path",
      *         required=true,
      *         @OA\Schema(type="integer")
@@ -280,7 +280,7 @@ class UsersController extends Controller
     *     )
     * )
     */
-    public function show(string $id)
+    public function show(string $uuid)
     {
         if(auth()->user()->hasRole('ROLE ADMIN') || auth()->user()->can('View User'))
         {
@@ -303,7 +303,7 @@ class UsersController extends Controller
                             'roles.id as role_id'
                         )
                         ->where('model_has_roles.role_id','!=',1)
-                        ->where('users.id','=',$id)
+                        ->where('users.uuid','=',$uuid)
                         ->whereNull('model_has_roles.deleted_at')
                         ->get();
 
@@ -329,11 +329,11 @@ class UsersController extends Controller
 
     /**
      * @OA\Put(
-     *     path="/api/user/{id}",
+     *     path="/api/users/{uuid}",
      *     summary="Update a userAccounts",
      *     tags={"userAccounts"},
      *     @OA\Parameter(
-     *         name="id",
+     *         name="uuid",
      *         in="path",
      *         required=true,
      *         @OA\Schema(type="integer")
@@ -365,7 +365,7 @@ class UsersController extends Controller
     *     )
     * )
     */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $uuid)
     {
         $auto_id = random_int(100000, 999999).time();
         $user_id = auth()->user()->id;
@@ -376,7 +376,7 @@ class UsersController extends Controller
         {
             try{
 
-                $users = User::find($id);
+                $users = User::where('uuid', $uuid)->firstOrFail();
                 $users->first_name  = $request->first_name;
                 $users->middle_name = $request->middle_name;
                 $users->last_name  = $request->last_name;
@@ -438,7 +438,7 @@ class UsersController extends Controller
 
      /**
      * @OA\Delete(
-     *     path="/api/user/{id}",
+     *     path="/api/users/{id}",
      *     summary="Delete a userAccounts",
      *     tags={"userAccounts"},
      *     @OA\Parameter(
@@ -458,13 +458,13 @@ class UsersController extends Controller
      *     )
      * )
      */
-    public function destroy(string $id)
+    public function destroy(string $uuid)
     {
         //
         if(auth()->user()->hasRole('ROLE ADMIN') || auth()->user()->can('Delete User'))
         {
             try{
-                $delete = User::find($id);
+                $delete = User::where('uuid', $uuid)->firstOrFail();
                 if ($delete != null) {
                     $delete->delete();
 

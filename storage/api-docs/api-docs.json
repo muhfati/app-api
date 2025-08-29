@@ -239,16 +239,16 @@
                 }
             }
         },
-        "/api/admin-hierarchies/{id}": {
+        "/api/admin-hierarchies/{uuid}": {
             "get": {
                 "tags": [
                     "AdminHierarchy"
                 ],
                 "summary": "Get a specific AdminHierarchy",
-                "operationId": "934825ee75dedfb8c25af8c3027dfc8b",
+                "operationId": "c7891abcd69216c0fbe43a18b97e8b74",
                 "parameters": [
                     {
-                        "name": "id",
+                        "name": "uuid",
                         "in": "path",
                         "required": true,
                         "schema": {
@@ -303,10 +303,10 @@
                     "AdminHierarchy"
                 ],
                 "summary": "Update a AdminHierarchy",
-                "operationId": "824e1d8abf8f7ff4f505c6b3ac693b2f",
+                "operationId": "486c96fe28a6487f0da6b535eb6a8a8f",
                 "parameters": [
                     {
-                        "name": "id",
+                        "name": "uuid",
                         "in": "path",
                         "required": true,
                         "schema": {
@@ -370,10 +370,10 @@
                     "AdminHierarchy"
                 ],
                 "summary": "Delete a AdminHierarchy",
-                "operationId": "839f9d1a73ffa744f2e515ee85aa1934",
+                "operationId": "729ef28a86714c142981a2cc9eae8922",
                 "parameters": [
                     {
-                        "name": "id",
+                        "name": "uuid",
                         "in": "path",
                         "required": true,
                         "schema": {
@@ -537,16 +537,16 @@
                 }
             }
         },
-        "/api/admin-hierarchy-levels/{id}": {
+        "/api/admin-hierarchy-levels/{uuid}": {
             "get": {
                 "tags": [
                     "AdminHierarchyLevel"
                 ],
                 "summary": "Get a specific AdminHierarchyLevel",
-                "operationId": "b2a1254775ccbfddc3a9f62e99cbe6b4",
+                "operationId": "13e90b64e750df828f24efc833af06e3",
                 "parameters": [
                     {
-                        "name": "id",
+                        "name": "uuid",
                         "in": "path",
                         "required": true,
                         "schema": {
@@ -592,10 +592,10 @@
                     "AdminHierarchyLevel"
                 ],
                 "summary": "Update a AdminHierarchyLevel",
-                "operationId": "7b611b426140a36edf9829bd49952915",
+                "operationId": "f96f6cc74e0498feaaeb8574b9f8d7e6",
                 "parameters": [
                     {
-                        "name": "id",
+                        "name": "uuid",
                         "in": "path",
                         "required": true,
                         "schema": {
@@ -650,10 +650,10 @@
                     "AdminHierarchyLevel"
                 ],
                 "summary": "Delete a AdminHierarchyLevel",
-                "operationId": "0cc49361571a44bdf5a20cfd49843525",
+                "operationId": "fb9eeaee645f2c0b1ccd7f3cd8f07538",
                 "parameters": [
                     {
-                        "name": "id",
+                        "name": "uuid",
                         "in": "path",
                         "required": true,
                         "schema": {
@@ -823,16 +823,16 @@
                 }
             }
         },
-        "/api/menu-groups/{id}": {
+        "/api/menu-groups/{uuid}": {
             "get": {
                 "tags": [
                     "MenuGroup"
                 ],
                 "summary": "Get a specific MenuGroup",
-                "operationId": "7c50646a8016cd513b98eed376ed460f",
+                "operationId": "f24b19a3231c7a488d24eab5a18bd89c",
                 "parameters": [
                     {
-                        "name": "id",
+                        "name": "uuid",
                         "in": "path",
                         "required": true,
                         "schema": {
@@ -881,10 +881,10 @@
                     "MenuGroup"
                 ],
                 "summary": "Update a MenuGroup",
-                "operationId": "caa0c681e6aa52b4458a67b6c4ad5b2a",
+                "operationId": "be9d3be918275377911f5dfb4d759ee0",
                 "parameters": [
                     {
-                        "name": "id",
+                        "name": "uuid",
                         "in": "path",
                         "required": true,
                         "schema": {
@@ -942,10 +942,10 @@
                     "MenuGroup"
                 ],
                 "summary": "Delete a MenuGroup",
-                "operationId": "438321b79f90b35fa54ffac8b5052b01",
+                "operationId": "8a982b679ecd882eb68ef671017c63c6",
                 "parameters": [
                     {
-                        "name": "id",
+                        "name": "uuid",
                         "in": "path",
                         "required": true,
                         "schema": {
@@ -1160,16 +1160,16 @@
                 }
             }
         },
-        "/api/menu-items/{id}": {
+        "/api/menu-items/{uuid}": {
             "get": {
                 "tags": [
                     "MenuItem"
                 ],
                 "summary": "Get a specific MenuItem",
-                "operationId": "d4a0f4116355302e00b00e471f666252",
+                "operationId": "82d5044f41d178328d09058c6f852ea9",
                 "parameters": [
                     {
-                        "name": "id",
+                        "name": "uuid",
                         "in": "path",
                         "required": true,
                         "schema": {
@@ -1224,10 +1224,10 @@
                     "MenuItem"
                 ],
                 "summary": "Update a MenuItem",
-                "operationId": "baedc7bb6df9688218ce000064bd2256",
+                "operationId": "f9a40004dc036a24a874fa8aaa105adc",
                 "parameters": [
                     {
-                        "name": "id",
+                        "name": "uuid",
                         "in": "path",
                         "required": true,
                         "schema": {
@@ -1291,10 +1291,10 @@
                     "MenuItem"
                 ],
                 "summary": "Delete a MenuItem",
-                "operationId": "91889ad968fa24bf9acf75dc4a19802d",
+                "operationId": "bb783631a1c2ff1392a201787cd2504d",
                 "parameters": [
                     {
-                        "name": "id",
+                        "name": "uuid",
                         "in": "path",
                         "required": true,
                         "schema": {
@@ -1324,13 +1324,13 @@
                 }
             }
         },
-        "/api/permission": {
+        "/api/permissions": {
             "get": {
                 "tags": [
                     "Permissions"
                 ],
                 "summary": "Get a paginated list of Permissions",
-                "operationId": "867a8e55df6689a195ae11bb0d2fe54b",
+                "operationId": "203018ae3adb170830e6d184f4555bf1",
                 "parameters": [
                     {
                         "name": "page",
@@ -1411,13 +1411,13 @@
                 }
             }
         },
-        "/api/permission/{id}": {
+        "/api/permissions/{id}": {
             "get": {
                 "tags": [
                     "Permissions"
                 ],
                 "summary": "Get a specific Permissions",
-                "operationId": "27cce0c4c0941040cda6e630ab437487",
+                "operationId": "298f623ddd8c8dd1f3afa2d63cc9f9c7",
                 "parameters": [
                     {
                         "name": "id",
@@ -1465,13 +1465,13 @@
                 }
             }
         },
-        "/api/role": {
+        "/api/roles": {
             "get": {
                 "tags": [
                     "Roles"
                 ],
                 "summary": "Get a paginated list of Roles",
-                "operationId": "8e610d85b19ff04279c0294ec3a64576",
+                "operationId": "749d24ed7524095e756bbfbb47a49749",
                 "parameters": [
                     {
                         "name": "page",
@@ -1568,7 +1568,7 @@
                     "Roles"
                 ],
                 "summary": "Store a new Role",
-                "operationId": "a957c9abb58d6849d60a083897b409e3",
+                "operationId": "338dd264bc14da2ab8d918f499c2ae9a",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -1612,13 +1612,13 @@
                 }
             }
         },
-        "/api/role/{id}": {
+        "/api/roles/{id}": {
             "get": {
                 "tags": [
                     "Roles"
                 ],
                 "summary": "Get a specific Role with its Permissions",
-                "operationId": "dbf6ec0019cffc3095261dc24b2b8d44",
+                "operationId": "c774321bc39b169932a28fa83e058b29",
                 "parameters": [
                     {
                         "name": "id",
@@ -1707,7 +1707,7 @@
                     "Roles"
                 ],
                 "summary": "Update a Roles",
-                "operationId": "aede71034e2cb3f6e7728f0d97668fce",
+                "operationId": "7ef4323dddb85d1eb8b6e2a2ee000f2f",
                 "parameters": [
                     {
                         "name": "id",
@@ -1767,7 +1767,7 @@
                     "Roles"
                 ],
                 "summary": "Delete a Roles",
-                "operationId": "4cd5d2b8aab87c902da3ac934d352179",
+                "operationId": "25ffc4b58cc919811bc1fd9b3fe8154e",
                 "parameters": [
                     {
                         "name": "id",
@@ -1999,13 +1999,13 @@
                 }
             }
         },
-        "/api/user": {
+        "/api/users": {
             "get": {
                 "tags": [
                     "userAccounts"
                 ],
                 "summary": "Get a paginated list of user accounts",
-                "operationId": "573fee14fb04ed766f642fc0c336293f",
+                "operationId": "2281a321303a86f4140bb31733346c38",
                 "parameters": [
                     {
                         "name": "page",
@@ -2118,7 +2118,7 @@
                     "userAccounts"
                 ],
                 "summary": "Store a new userAccounts",
-                "operationId": "96c176717e4c75e6ac3123bd8f5fd6f6",
+                "operationId": "c03a4f282e6d6db8a68085c624732c8e",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -2184,16 +2184,16 @@
                 }
             }
         },
-        "/api/user/{id}": {
+        "/api/users/{uuid}": {
             "get": {
                 "tags": [
                     "userAccounts"
                 ],
                 "summary": "Get a specific userAccounts",
-                "operationId": "d65212dbd0cb17ffa729bb609f7ee032",
+                "operationId": "06d92b8624f3cd84b7b8e7bd2437d5cd",
                 "parameters": [
                     {
-                        "name": "id",
+                        "name": "uuid",
                         "in": "path",
                         "required": true,
                         "schema": {
@@ -2268,10 +2268,10 @@
                     "userAccounts"
                 ],
                 "summary": "Update a userAccounts",
-                "operationId": "9fc377504d9e145b3a64d71a2be2b661",
+                "operationId": "22d4f8120caa2522b506599512b34361",
                 "parameters": [
                     {
-                        "name": "id",
+                        "name": "uuid",
                         "in": "path",
                         "required": true,
                         "schema": {
@@ -2345,13 +2345,15 @@
                         }
                     }
                 }
-            },
+            }
+        },
+        "/api/users/{id}": {
             "delete": {
                 "tags": [
                     "userAccounts"
                 ],
                 "summary": "Delete a userAccounts",
-                "operationId": "2f37f92b8afd6d8a20d88c6a856bae84",
+                "operationId": "2f57b5024df5157124d3279002f02849",
                 "parameters": [
                     {
                         "name": "id",

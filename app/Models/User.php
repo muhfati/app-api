@@ -67,4 +67,8 @@ class User extends Authenticatable
         ->logOnly(['*']);
     }
 
+    public function getRouteKeyName()
+    {
+        return 'uuid';
+    }
 }

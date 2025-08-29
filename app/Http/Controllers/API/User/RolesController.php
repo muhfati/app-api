@@ -21,7 +21,7 @@ class RolesController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/api/role",
+     *     path="/api/roles",
      *     summary="Get a paginated list of Roles",
      *     tags={"Roles"},
      *     @OA\Parameter(
@@ -114,7 +114,7 @@ class RolesController extends Controller
 
     /**
      * @OA\Post(
-     *     path="/api/role",
+     *     path="/api/roles",
      *     summary="Store a new Role",
      *     tags={"Roles"},
      *     @OA\RequestBody(
@@ -191,7 +191,7 @@ class RolesController extends Controller
 
    /**
      * @OA\Get(
-     *     path="/api/role/{id}",
+     *     path="/api/roles/{id}",
      *     summary="Get a specific Role with its Permissions",
      *     tags={"Roles"},
      *     @OA\Parameter(
@@ -297,7 +297,7 @@ class RolesController extends Controller
 
     /**
      * @OA\Put(
-     *     path="/api/role/{id}",
+     *     path="/api/roles/{id}",
      *     summary="Update a Roles",
      *     tags={"Roles"},
      *     @OA\Parameter(
@@ -375,7 +375,7 @@ class RolesController extends Controller
 
      /**
      * @OA\Delete(
-     *     path="/api/role/{id}",
+     *     path="/api/roles/{id}",
      *     summary="Delete a Roles",
      *     tags={"Roles"},
      *     @OA\Parameter(

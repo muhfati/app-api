@@ -41,4 +41,9 @@ class MenuItem extends Model
             'permission_id'         
         );
     }
+
+    public function getRouteKeyName()
+    {
+        return 'uuid';
+    }
 }

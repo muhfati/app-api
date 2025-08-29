@@ -112,11 +112,11 @@ class MenuGroupController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/api/menu-groups/{id}",
+     *     path="/api/menu-groups/{uuid}",
      *     summary="Get a specific MenuGroup",
      *     tags={"MenuGroup"},
      *     @OA\Parameter(
-     *         name="id",
+     *         name="uuid",
      *         in="path",
      *         required=true,
      *         @OA\Schema(type="integer")
@@ -140,19 +140,19 @@ class MenuGroupController extends Controller
     *     )
     * )
     */
-    public function show($id)
+    public function show($uuid)
     {
-        $record = MenuGroup::findOrFail($id);
+        $record = MenuGroup::where('uuid', $uuid)->firstOrFail();
         return response()->json(['data' => $record, 'statusCode' => 200]);
     }
 
     /**
      * @OA\Put(
-     *     path="/api/menu-groups/{id}",
+     *     path="/api/menu-groups/{uuid}",
      *     summary="Update a MenuGroup",
      *     tags={"MenuGroup"},
      *     @OA\Parameter(
-     *         name="id",
+     *         name="uuid",
      *         in="path",
      *         required=true,
      *         @OA\Schema(type="integer")
@@ -178,20 +178,20 @@ class MenuGroupController extends Controller
     *     )
     * )
     */
-    public function update(Request $request, $id)
+    public function update(Request $request, $uuid)
     {
-        $record = MenuGroup::findOrFail($id);
+        $record = MenuGroup::where('uuid', $uuid)->firstOrFail();
         $record->update($request->all());
         return response()->json(['message' => 'MenuGroup updated', 'statusCode' => 200]);
     }
 
     /**
      * @OA\Delete(
-     *     path="/api/menu-groups/{id}",
+     *     path="/api/menu-groups/{uuid}",
      *     summary="Delete a MenuGroup",
      *     tags={"MenuGroup"},
      *     @OA\Parameter(
-     *         name="id",
+     *         name="uuid",
      *         in="path",
      *         required=true,
      *         @OA\Schema(type="integer")
@@ -207,9 +207,9 @@ class MenuGroupController extends Controller
      *     )
      * )
      */
-    public function destroy($id)
+    public function destroy($uuid)
     {
-        $record = MenuGroup::findOrFail($id);
+        $record = MenuGroup::where('uuid', $uuid)->firstOrFail();
         $record->delete();
         return response()->json(['message' => 'MenuGroup deleted', 'statusCode' => 200]);
     }
