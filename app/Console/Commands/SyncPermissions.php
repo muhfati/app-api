@@ -82,7 +82,7 @@ class SyncPermissions extends Command
 
             $permissionName = $this->generatePermissionName($controllerName, $method->name);
             if (!Permission::where('name', $permissionName)->exists()) {
-                Permission::create(['name' => $permissionName]);
+                Permission::create(['name' => $permissionName,'uuid' => Str::uuid()]);
                 $this->info("Permission created: $permissionName");
             }
         }

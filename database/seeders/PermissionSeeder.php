@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class PermissionSeeder extends Seeder
 {
@@ -55,7 +56,7 @@ class PermissionSeeder extends Seeder
 
          foreach ($permissions as $permission) {
 
-            Permission::create(['name' => $permission,'guard_name'=>'web']);
+            Permission::create(['name' => $permission,'guard_name'=>'web','uuid'=>Str::uuid()]);
 
          }
     }

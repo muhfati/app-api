@@ -1509,6 +1509,10 @@
                                                         "type": "integer",
                                                         "example": 2
                                                     },
+                                                    "uuid": {
+                                                        "type": "string",
+                                                        "example": 2
+                                                    },
                                                     "name": {
                                                         "type": "string",
                                                         "example": "ROLE NATIONAL"
@@ -1612,16 +1616,16 @@
                 }
             }
         },
-        "/api/roles/{id}": {
+        "/api/roles/{uuid}": {
             "get": {
                 "tags": [
                     "Roles"
                 ],
                 "summary": "Get a specific Role with its Permissions",
-                "operationId": "c774321bc39b169932a28fa83e058b29",
+                "operationId": "85042418057dd1f002fbb8693980440d",
                 "parameters": [
                     {
-                        "name": "id",
+                        "name": "uuid",
                         "in": "path",
                         "description": "ID of the role",
                         "required": true,
@@ -1707,10 +1711,10 @@
                     "Roles"
                 ],
                 "summary": "Update a Roles",
-                "operationId": "7ef4323dddb85d1eb8b6e2a2ee000f2f",
+                "operationId": "f8c2f61bc662abeb4a675326f5ea1321",
                 "parameters": [
                     {
-                        "name": "id",
+                        "name": "uuid",
                         "in": "path",
                         "required": true,
                         "schema": {
@@ -1767,10 +1771,10 @@
                     "Roles"
                 ],
                 "summary": "Delete a Roles",
-                "operationId": "25ffc4b58cc919811bc1fd9b3fe8154e",
+                "operationId": "7af095f3cb7fd926d08a0e973c29aa32",
                 "parameters": [
                     {
-                        "name": "id",
+                        "name": "uuid",
                         "in": "path",
                         "required": true,
                         "schema": {
@@ -2345,18 +2349,16 @@
                         }
                     }
                 }
-            }
-        },
-        "/api/users/{id}": {
+            },
             "delete": {
                 "tags": [
                     "userAccounts"
                 ],
                 "summary": "Delete a userAccounts",
-                "operationId": "2f57b5024df5157124d3279002f02849",
+                "operationId": "e7b1f1ff227e982371262d6cd3c451f5",
                 "parameters": [
                     {
-                        "name": "id",
+                        "name": "uuid",
                         "in": "path",
                         "required": true,
                         "schema": {

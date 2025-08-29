@@ -48,6 +48,7 @@ class RolesController extends Controller
      *                 type="array",
      *                 @OA\Items(
      *                     @OA\Property(property="id", type="integer", example=2),
+     *                     @OA\Property(property="uuid", type="string", example=2),
      *                     @OA\Property(property="name", type="string", example="ROLE NATIONAL"),
      *                     @OA\Property(property="guard_name", type="string", example="web"),
      *                     @OA\Property(property="created_at", type="string", format="date-time", example="2024-08-28 11:30:25"),
@@ -150,7 +151,8 @@ class RolesController extends Controller
                 {
                     $role = Role::create([
                         'name' => $rolename,
-                        'guard_name' => 'web'
+                        'guard_name' => 'web',
+                        'uuid' => Str::uuid()
                     ]);
                     
                     $role->syncPermissions($permission);
@@ -191,11 +193,11 @@ class RolesController extends Controller
 
    /**
      * @OA\Get(
-     *     path="/api/roles/{id}",
+     *     path="/api/roles/{uuid}",
      *     summary="Get a specific Role with its Permissions",
      *     tags={"Roles"},
      *     @OA\Parameter(
-     *         name="id",
+     *         name="uuid",
      *         in="path",
      *         required=true,
      *         description="ID of the role",
@@ -236,13 +238,13 @@ class RolesController extends Controller
      *     )
      * )
      */
-    public function show(string $id)
+    public function show(string $uuid)
     {
         if (auth()->user()->hasRole('ROLE ADMIN') || auth()->user()->can('Update Role')) { 
             try {
                 $role = DB::table('roles')
                             ->select('roles.id','roles.name')
-                            ->where('roles.id', $id)
+                            ->where('roles.uuid', $uuid)
                             ->first();
 
                 if (!$role) {
@@ -254,7 +256,7 @@ class RolesController extends Controller
 
                 $rolePermissions = DB::table('role_has_permissions')
                                     ->join('permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
-                                    ->where('role_has_permissions.role_id', $id)
+                                    ->where('role_has_permissions.role_id', $role->id)
                                     ->select('permissions.id', 'permissions.name')
                                     ->get();
 
@@ -297,11 +299,11 @@ class RolesController extends Controller
 
     /**
      * @OA\Put(
-     *     path="/api/roles/{id}",
+     *     path="/api/roles/{uuid}",
      *     summary="Update a Roles",
      *     tags={"Roles"},
      *     @OA\Parameter(
-     *         name="id",
+     *         name="uuid",
      *         in="path",
      *         required=true,
      *         @OA\Schema(type="integer")
@@ -329,7 +331,7 @@ class RolesController extends Controller
     *     )
     * )
     */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $uuid)
     {
         $validator = Validator::make($request->all(), [
             'permission_id' => 'required|array',
@@ -347,7 +349,7 @@ class RolesController extends Controller
 
         if (auth()->user()->hasRole('ROLE ADMIN') || auth()->user()->can('Update Role')) {
             try {
-                $role = Role::findOrFail($id);
+                $role = Role::where('uuid', $uuid)->firstOrFail();
                 $role->name = $request->name;
                 $role->save();
 
@@ -375,11 +377,11 @@ class RolesController extends Controller
 
      /**
      * @OA\Delete(
-     *     path="/api/roles/{id}",
+     *     path="/api/roles/{uuid}",
      *     summary="Delete a Roles",
      *     tags={"Roles"},
      *     @OA\Parameter(
-     *         name="id",
+     *         name="uuid",
      *         in="path",
      *         required=true,
      *         @OA\Schema(type="integer")
@@ -395,18 +397,22 @@ class RolesController extends Controller
      *     )
      * )
      */
-    public function destroy(string $id)
+    public function destroy(string $uuid)
     {
         if(auth()->user()->hasRole('ROLE ADMIN') || auth()->user()->can('Delete Role'))
         {
-           $used_role = DB::table('roles')
+            $roleId = Role::where('uuid', $uuid)->firstOrFail();
+            $id = $roleId->id;
+            
+            $used_role = DB::table('roles')
                             ->join('model_has_roles','model_has_roles.role_id','=','roles.id')
                             ->select('roles.id','model_has_roles.role_id')
                             ->where('model_has_roles.role_id',$id)
                             ->get();
+                            
             if(sizeof($used_role) == 0){
                 try{
-                    $delete = Role::find($id);
+                    $delete = Role::where('uuid', $uuid)->firstOrFail();
                     if ($delete != null) {
                         $delete->delete();
     

@@ -30,11 +30,12 @@ class UserSeeder extends Seeder
             'gender' => 'Male', 
             'phone_no' => '0777000001', 
             'date_of_birth' => '1990-10-30', 
+            'admin_hierarchy_id' => 1,
             'email' => 'info@mohz.go.tz',
-            'password' => bcrypt('Admin@123')
+            'password' => bcrypt('Admin@Mohz2024'), // password
         ]);
 
-        $role = Role::create(['name' => 'ROLE ADMIN']);
+        $role = Role::create(['name' => 'ROLE ADMIN','guard_name'=>'web','uuid'=>Str::uuid()]);
 
         $permissions = Permission::pluck('id','id')->all();
 
