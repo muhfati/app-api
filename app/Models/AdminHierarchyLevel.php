@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Activitylog\LogOptions;
+use Illuminate\Support\Str;
 
 class AdminHierarchyLevel extends Model
 {
@@ -18,10 +19,20 @@ class AdminHierarchyLevel extends Model
         'code',
         'position',
         'created_by',
-        'updated_by',
-        'uuid'
+        'updated_by'
     ];
     protected $dates = ['deleted_at'];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            if (empty($model->uuid)) {
+                $model->uuid = (string) Str::uuid();
+            }
+        });
+    }
 
     public function getActivitylogOptions(): LogOptions
     {

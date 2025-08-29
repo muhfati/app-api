@@ -9,20 +9,20 @@ use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Activitylog\LogOptions;
 use Illuminate\Support\Str;
 
-class MenuGroup extends Model
+class Sample extends Model
 {
     use LogsActivity, HasFactory, SoftDeletes;
 
-    protected $table = 'menu_groups';
+    protected $table = 'samples';
     protected $fillable = [
         'name',
         'sw_name',
         'icon',
         'sort_order',
         'created_by',
-        'updated_by'
+        'updated_by',
+        'uuid'
     ];
-
     protected $dates = ['deleted_at'];
 
     protected static function boot()
@@ -36,14 +36,14 @@ class MenuGroup extends Model
         });
     }
 
-    public function getActivitylogOptions(): LogOptions
-    {
-        return LogOptions::defaults()->logOnly(['*']);
-    }
-
     public function getRouteKeyName()
     {
         return 'uuid';
+    }
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()->logOnly(['*']);
     }
     
 }

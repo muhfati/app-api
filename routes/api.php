@@ -32,3 +32,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::apiResource('admin-hierarchies', App\Http\Controllers\API\Setup\AdminHierarchyController::class);
 
 });
+
+
+Route::apiResource('samples', App\Http\Controllers\API\Setup\SampleController::class);

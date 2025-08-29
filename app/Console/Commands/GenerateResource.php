@@ -138,6 +138,7 @@ class GenerateResource extends Command
         use Illuminate\Database\Eloquent\SoftDeletes;
         use Spatie\Activitylog\Traits\LogsActivity;
         use Spatie\Activitylog\LogOptions;
+        use Illuminate\Support\Str;
 
         class {$name} extends Model
         {
@@ -148,6 +149,17 @@ class GenerateResource extends Command
                 {$fillableStr}
             ];
             protected \$dates = ['deleted_at'];
+
+            protected static function boot()
+            {
+                parent::boot();
+
+                static::creating(function (\$model) {
+                    if (empty(\$model->uuid)) {
+                        \$model->uuid = (string) Str::uuid();
+                    }
+                });
+            }
 
             public function getRouteKeyName()
             {
@@ -165,6 +177,7 @@ class GenerateResource extends Command
         File::put($modelPath, $modelTemplate);
         $this->info("Model $name generated.");
     }
+
 
 
     private function generateController($name, $fields, $namespace, $relations)

@@ -22,7 +22,6 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'uuid',
         'first_name',
         'middle_name',
         'last_name',
@@ -70,5 +69,10 @@ class User extends Authenticatable
     public function getRouteKeyName()
     {
         return 'uuid';
+    }
+
+    public function uniqueIds()
+    {
+        return ['uuid'];
     }
 }
