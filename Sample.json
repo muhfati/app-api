@@ -15,6 +15,7 @@
     "_step10": "You will be prompted to choose where to put the controller (Management or Setup folder).",
     "_step11": "The generator will create migration, model, controller (with CRUD + Swagger), register the route, and create pivot migrations if needed.",
     
+    
 
 
   "name": "MenuItem",
