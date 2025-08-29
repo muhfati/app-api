@@ -17,10 +17,10 @@ return new class extends Migration
             $table->string('first_name', 30);
             $table->string('middle_name', 30);
             $table->string('last_name', 30);
-            $table->string('location_id', 250);
             $table->string('gender',15);
             $table->string('phone_no',20)->unique();
-            $table->date('date_of_birth');
+            $table->date('date_of_birth')->nullable();
+            $table->unsignedBigInteger('admin_hierarchy_id')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

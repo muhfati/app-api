@@ -26,7 +26,7 @@ class User extends Authenticatable
         'first_name',
         'middle_name',
         'last_name',
-        'location_id',
+        'admin_hierarchy_id',
         'phone_no',
         'date_of_birth',
         'email',

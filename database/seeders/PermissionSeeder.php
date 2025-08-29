@@ -22,6 +22,10 @@ class PermissionSeeder extends Seeder
 
             'View Dashboard',
             'View Permission',
+            'Change Password',
+            'Reset Password',
+            'View Profile',
+            'View System Logs',
             'System Audit',
 
             'Zone A Permission',

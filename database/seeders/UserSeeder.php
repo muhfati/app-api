@@ -27,7 +27,6 @@ class UserSeeder extends Seeder
             'first_name' => 'System', 
             'middle_name' => 'Supper', 
             'last_name' => 'Admin', 
-            'location_id' => '100012', 
             'gender' => 'Male', 
             'phone_no' => '0777000001', 
             'date_of_birth' => '1990-10-30', 
