@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\API\User;
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\API\Setup\GeneralController;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -16,7 +15,7 @@ class RolesController extends Controller
     public function __construct()
     {
         $this->middleware('auth:sanctum');
-        $this->middleware('permission:View Role|Create Role|Create Role|Update Role|Update Role|Delete Role', ['only' => ['index','create','store','update','destroy']]);
+        // $this->middleware('permission:View Role|Create Role|Create Role|Update Role|Update Role|Delete Role', ['only' => ['index','create','store','update','destroy']]);
     }
 
     /**
@@ -103,14 +102,6 @@ class RolesController extends Controller
                 'status' => 401
             ], 401);
         }
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -286,15 +277,6 @@ class RolesController extends Controller
                 'statusCode' => 401
             ], 401);
         }
-    }
-
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
     }
 
     /**

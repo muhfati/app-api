@@ -17,9 +17,9 @@ Route::post('login', [App\Http\Controllers\API\Auth\AuthController::class, 'logi
 
 Route::middleware(['auth:sanctum'])->group(function () {
 
-    Route::get('check-password', [App\Http\Controllers\API\User\UserProfileCotroller::class, 'index'])->name('check-password');
-    Route::post('change-password', [App\Http\Controllers\API\User\UserProfileCotroller::class, 'changePassword'])->name('change-password');
-    Route::post('reset-password', [App\Http\Controllers\API\User\UserProfileCotroller::class, 'resetPassword'])->name('reset-password');
+    Route::get('check-password', [App\Http\Controllers\API\User\UserProfileController::class, 'index'])->name('check-password');
+    Route::post('change-password', [App\Http\Controllers\API\User\UserProfileController::class, 'changePassword'])->name('change-password');
+    Route::post('reset-password', [App\Http\Controllers\API\User\UserProfileController::class, 'resetPassword'])->name('reset-password');
     Route::get('audit-logs', [App\Http\Controllers\API\User\UserProfileController::class, 'auditLogs'])->name('audit-logs');
 
     Route::apiResource('users', App\Http\Controllers\API\User\UsersController::class);
@@ -33,5 +33,3 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
 });
 
-
-Route::apiResource('samples', App\Http\Controllers\API\Setup\SampleController::class);

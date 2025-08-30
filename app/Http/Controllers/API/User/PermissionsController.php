@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API\User;
 
 use App\Http\Controllers\Controller;
 use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Middlewares\PermissionMiddleware;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Str;
@@ -17,7 +18,7 @@ class PermissionsController extends Controller
     public function __construct()
     {
         $this->middleware('auth:sanctum');
-        $this->middleware('permission:View Permission|View Permission', ['only' => ['index','show']]);
+        // $this->middleware('permission:View Permission|View Permission', ['only' => ['index','show']]);
     }
 
     /**
@@ -108,15 +109,6 @@ class PermissionsController extends Controller
         }
     }
 
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
     public function store(Request $request)
     {
         //
@@ -170,13 +162,6 @@ class PermissionsController extends Controller
         }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
 
     public function update(Request $request, string $id)
     {
