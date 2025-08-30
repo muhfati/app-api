@@ -20,11 +20,11 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('check-password', [App\Http\Controllers\API\User\UserProfileCotroller::class, 'index'])->name('check-password');
     Route::post('change-password', [App\Http\Controllers\API\User\UserProfileCotroller::class, 'changePassword'])->name('change-password');
     Route::post('reset-password', [App\Http\Controllers\API\User\UserProfileCotroller::class, 'resetPassword'])->name('reset-password');
-    Route::get('audit-logs', [App\Http\Controllers\API\User\UserProfileCotroller::class, 'auditLogs'])->name('audit-logs');
+    Route::get('audit-logs', [App\Http\Controllers\API\User\UserProfileController::class, 'auditLogs'])->name('audit-logs');
 
-    Route::apiResource('users', App\Http\Controllers\API\User\UsersCotroller::class);
-    Route::apiResource('roles', App\Http\Controllers\API\User\RolesCotroller::class);
-    Route::apiResource('permissions', App\Http\Controllers\API\User\PermissionsCotroller::class);
+    Route::apiResource('users', App\Http\Controllers\API\User\UsersController::class);
+    Route::apiResource('roles', App\Http\Controllers\API\User\RolesController::class);
+    Route::apiResource('permissions', App\Http\Controllers\API\User\PermissionsController::class);
 
     Route::apiResource('menu-groups', App\Http\Controllers\API\Setup\MenuGroupController::class);
     Route::apiResource('menu-items', App\Http\Controllers\API\Setup\MenuItemController::class);
