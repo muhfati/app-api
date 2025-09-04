@@ -61,7 +61,7 @@ class UserProfileController extends Controller
      * @OA\Post(
      *     path="/api/change-password",
      *     summary="Store a new Profiles",
-     *     tags={"userAccounts"},
+     *     tags={"Users"},
      *     @OA\RequestBody(
      *         required=true,
      *         @OA\JsonContent(
@@ -135,7 +135,7 @@ class UserProfileController extends Controller
      * @OA\Post(
      *     path="/api/reset-password",
      *     summary="Store a new Profiles",
-     *     tags={"userAccounts"},
+     *     tags={"Users"},
      *     @OA\RequestBody(
      *         required=true,
      *         @OA\JsonContent(
@@ -195,7 +195,7 @@ class UserProfileController extends Controller
      * @OA\Get(
      *     path="/api/audit-logs",
      *     summary="Get a paginated list of Activity Logs",
-     *     tags={"userAccounts"},
+     *     tags={"Users"},
      *     @OA\Parameter(
      *         name="page",
      *         in="query",

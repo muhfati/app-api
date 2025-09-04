@@ -1324,6 +1324,301 @@
                 }
             }
         },
+        "/api/samples": {
+            "get": {
+                "tags": [
+                    "Sample"
+                ],
+                "summary": "Get a paginated list of Sample",
+                "operationId": "a344fb036c1f337fcafba0286059e2c2",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page number",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "default": 1
+                        }
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "Items per page",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "default": 10
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "name": {
+                                                        "type": "string"
+                                                    },
+                                                    "sw_name": {
+                                                        "type": "string"
+                                                    },
+                                                    "icon": {
+                                                        "type": "string"
+                                                    },
+                                                    "sort_order": {
+                                                        "type": "integer"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "current_page": {
+                                            "type": "integer"
+                                        },
+                                        "per_page": {
+                                            "type": "integer"
+                                        },
+                                        "total": {
+                                            "type": "integer"
+                                        },
+                                        "last_page": {
+                                            "type": "integer"
+                                        },
+                                        "next_page_url": {
+                                            "type": "string",
+                                            "nullable": true
+                                        },
+                                        "prev_page_url": {
+                                            "type": "string",
+                                            "nullable": true
+                                        },
+                                        "statusCode": {
+                                            "type": "integer",
+                                            "example": 200
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Sample"
+                ],
+                "summary": "Store a new Sample",
+                "operationId": "7f9bf0460bf829b1e871af10bdbc7d72",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "sw_name": {
+                                        "type": "string"
+                                    },
+                                    "icon": {
+                                        "type": "string"
+                                    },
+                                    "sort_order": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "statusCode": {
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/samples/{uuid}": {
+            "get": {
+                "tags": [
+                    "Sample"
+                ],
+                "summary": "Get a specific Sample",
+                "operationId": "f708ce9a8b1e3208db8a6cc74a7769ad",
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "name": {
+                                                    "type": "string"
+                                                },
+                                                "sw_name": {
+                                                    "type": "string"
+                                                },
+                                                "icon": {
+                                                    "type": "string"
+                                                },
+                                                "sort_order": {
+                                                    "type": "integer"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "statusCode": {
+                                            "type": "integer",
+                                            "example": 200
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Sample"
+                ],
+                "summary": "Update a Sample",
+                "operationId": "9785464591ae59abee3eab417f1afa5b",
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "sw_name": {
+                                        "type": "string"
+                                    },
+                                    "icon": {
+                                        "type": "string"
+                                    },
+                                    "sort_order": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "statusCode": {
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Sample"
+                ],
+                "summary": "Delete a Sample",
+                "operationId": "730db66ed5e5d74403fd7d3b0b899b80",
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "statusCode": {
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/api/permissions": {
             "get": {
                 "tags": [
@@ -1807,7 +2102,7 @@
         "/api/change-password": {
             "post": {
                 "tags": [
-                    "userAccounts"
+                    "Users"
                 ],
                 "summary": "Store a new Profiles",
                 "operationId": "d85f70c50c88807516cde497c391d165",
@@ -1854,7 +2149,7 @@
         "/api/reset-password": {
             "post": {
                 "tags": [
-                    "userAccounts"
+                    "Users"
                 ],
                 "summary": "Store a new Profiles",
                 "operationId": "ec1c0999a4081b82a311d9ac9e979db4",
@@ -1898,7 +2193,7 @@
         "/api/audit-logs": {
             "get": {
                 "tags": [
-                    "userAccounts"
+                    "Users"
                 ],
                 "summary": "Get a paginated list of Activity Logs",
                 "operationId": "5532b53093761dba7b7f6df96dc5bcea",
@@ -2006,7 +2301,7 @@
         "/api/users": {
             "get": {
                 "tags": [
-                    "userAccounts"
+                    "Users"
                 ],
                 "summary": "Get a paginated list of user accounts",
                 "operationId": "2281a321303a86f4140bb31733346c38",
@@ -2119,9 +2414,9 @@
             },
             "post": {
                 "tags": [
-                    "userAccounts"
+                    "Users"
                 ],
-                "summary": "Store a new userAccounts",
+                "summary": "Store a new user account",
                 "operationId": "c03a4f282e6d6db8a68085c624732c8e",
                 "requestBody": {
                     "required": true,
@@ -2167,13 +2462,19 @@
                     }
                 },
                 "responses": {
-                    "200": {
-                        "description": "Successful operation",
+                    "201": {
+                        "description": "User created successfully",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
                                         "message": {
+                                            "type": "string"
+                                        },
+                                        "password": {
+                                            "type": "string"
+                                        },
+                                        "email": {
                                             "type": "string"
                                         },
                                         "statusCode": {
@@ -2191,9 +2492,9 @@
         "/api/users/{uuid}": {
             "get": {
                 "tags": [
-                    "userAccounts"
+                    "Users"
                 ],
-                "summary": "Get a specific userAccounts",
+                "summary": "Get a specific user account",
                 "operationId": "06d92b8624f3cd84b7b8e7bd2437d5cd",
                 "parameters": [
                     {
@@ -2201,7 +2502,7 @@
                         "in": "path",
                         "required": true,
                         "schema": {
-                            "type": "integer"
+                            "type": "string"
                         }
                     }
                 ],
@@ -2213,46 +2514,6 @@
                                 "schema": {
                                     "properties": {
                                         "data": {
-                                            "properties": {
-                                                "id": {
-                                                    "type": "integer"
-                                                },
-                                                "first_name": {
-                                                    "type": "string"
-                                                },
-                                                "middle_name": {
-                                                    "type": "string"
-                                                },
-                                                "last_name": {
-                                                    "type": "string"
-                                                },
-                                                "email": {
-                                                    "type": "string"
-                                                },
-                                                "phone_no": {
-                                                    "type": "string"
-                                                },
-                                                "address": {
-                                                    "type": "string"
-                                                },
-                                                "gender": {
-                                                    "type": "string"
-                                                },
-                                                "date_of_birth": {
-                                                    "type": "string",
-                                                    "format": "date"
-                                                },
-                                                "deleted_at": {
-                                                    "type": "string",
-                                                    "nullable": true
-                                                },
-                                                "role_id": {
-                                                    "type": "integer"
-                                                },
-                                                "role_name": {
-                                                    "type": "string"
-                                                }
-                                            },
                                             "type": "object"
                                         },
                                         "statusCode": {
@@ -2269,9 +2530,9 @@
             },
             "put": {
                 "tags": [
-                    "userAccounts"
+                    "Users"
                 ],
-                "summary": "Update a userAccounts",
+                "summary": "Update a user account",
                 "operationId": "22d4f8120caa2522b506599512b34361",
                 "parameters": [
                     {
@@ -2279,7 +2540,7 @@
                         "in": "path",
                         "required": true,
                         "schema": {
-                            "type": "integer"
+                            "type": "string"
                         }
                     }
                 ],
@@ -2298,10 +2559,7 @@
                                     "last_name": {
                                         "type": "string"
                                     },
-                                    "location_id": {
-                                        "type": "string"
-                                    },
-                                    "council_id": {
+                                    "admin_hierarchy_id": {
                                         "type": "string"
                                     },
                                     "role_id": {
@@ -2314,13 +2572,7 @@
                                         "type": "string",
                                         "format": "date"
                                     },
-                                    "email": {
-                                        "type": "string"
-                                    },
                                     "gender": {
-                                        "type": "string"
-                                    },
-                                    "password": {
                                         "type": "string"
                                     }
                                 },
@@ -2352,9 +2604,9 @@
             },
             "delete": {
                 "tags": [
-                    "userAccounts"
+                    "Users"
                 ],
-                "summary": "Delete a userAccounts",
+                "summary": "Delete a user account",
                 "operationId": "e7b1f1ff227e982371262d6cd3c451f5",
                 "parameters": [
                     {
@@ -2362,7 +2614,7 @@
                         "in": "path",
                         "required": true,
                         "schema": {
-                            "type": "integer"
+                            "type": "string"
                         }
                     }
                 ],
@@ -2403,6 +2655,9 @@
             "name": "MenuItem"
         },
         {
+            "name": "Sample"
+        },
+        {
             "name": "Auth",
             "description": "Auth"
         },
@@ -2415,8 +2670,8 @@
             "description": "Roles"
         },
         {
-            "name": "userAccounts",
-            "description": "userAccounts"
+            "name": "Users",
+            "description": "Users"
         }
     ]
 }
